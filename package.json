@@ -1,6 +1,6 @@
 {
   "name": "@jeremyckahn/farmhand",
-  "version": "1.18.5",
+  "version": "1.18.6",
   "publishConfig": {
     "access": "public"
   },
@@ -94,7 +94,7 @@
     "@material-ui/lab": "^4.0.0-alpha.53",
     "animate.css": "^4.1.0",
     "assert": "npm:assert-browserify@^2.0.0",
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "babel-eslint": "^10.1.0",
     "buffer": "^6.0.3",
     "classnames": "^2.2.6",
@@ -133,7 +133,7 @@
     "shifty": "^3.0.1",
     "source-map-explorer": "^2.3.1",
     "stream": "npm:stream-browserify@^3.0.0",
-    "trystero": "^0.13.1",
+    "trystero": "^0.16.0",
     "typeface-francois-one": "0.0.71",
     "typeface-public-sans": "^1.1.4",
     "url": "^0.11.0",
