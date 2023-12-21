@@ -2,7 +2,8 @@ import React, { Component, useEffect } from 'react'
 import { array, bool, func, object, string } from 'prop-types'
 import classNames from 'classnames'
 import { Tweenable } from 'shifty'
-import Tooltip from '@material-ui/core/Tooltip'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,6 +34,7 @@ export class Cow extends Component {
   repositionTimeoutId = null
   animateHugTimeoutId = null
   tweenable = new Tweenable()
+  isComponentMounted = false
 
   static flipAnimationDuration = 1000
   static transitionAnimationDuration = 3000
@@ -161,15 +163,21 @@ export class Cow extends Component {
   }
 
   componentDidMount() {
+    this.isComponentMounted = true
     this.scheduleMove()
     ;(async () => {
-      this.setState({ cowImage: await getCowImage(this.props.cow) })
+      const cowImage = await getCowImage(this.props.cow)
+
+      if (!this.isComponentMounted) return
+
+      this.setState({ cowImage: cowImage })
     })()
   }
 
   componentWillUnmount() {
     ;[this.repositionTimeoutId, this.animateHugTimeoutId].forEach(clearTimeout)
 
+    this.isComponentMounted = false
     this.tweenable.cancel()
   }
 
@@ -203,7 +211,7 @@ export class Cow extends Component {
           {...{
             arrow: true,
             placement: 'top',
-            title: cowDisplayName,
+            title: <Typography>{cowDisplayName}</Typography>,
             open: isSelected,
             PopperProps: {
               disablePortal: true,
