@@ -73,7 +73,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.PACKAGE_VERSION }}
           name: ${{ env.PACKAGE_VERSION }}
