@@ -57,7 +57,7 @@ jobs:
       # https://github.community/t/push-from-action-does-not-trigger-subsequent-action/16854/2
       - uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           tags: true
           branch: main
 
@@ -97,7 +97,7 @@ jobs:
           PUBLIC_URL='/farmhand' npm run build
 
       # https://github.com/marketplace/actions/deploy-to-github-pages
-      - name: Deploy to jeremyckahn.github.io/farmhand
+      - name: pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
